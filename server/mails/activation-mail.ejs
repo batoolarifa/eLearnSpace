@@ -1,0 +1,190 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ELearning Actiavtion Email</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f4f7fc;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper {
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2563eb, #4f46e5);
+            padding: 40px 30px;
+            text-align: center;
+            color: white;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px 35px;
+            color: #374151;
+            line-height: 1.8;
+        }
+
+        .content h2 {
+            margin-top: 0;
+            color: #111827;
+        }
+
+        .code-box {
+            background: #eff6ff;
+            border: 2px dashed #2563eb;
+            color: #2563eb;
+            text-align: center;
+            padding: 20px;
+            margin: 30px 0;
+            border-radius: 10px;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 6px;
+        }
+
+        .features {
+            background: #f9fafb;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+
+        .features ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .features li {
+            margin-bottom: 10px;
+        }
+
+        .footer {
+            background: #f9fafb;
+            text-align: center;
+            padding: 25px;
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .footer p {
+            margin: 5px 0;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .content {
+                padding: 25px;
+            }
+
+            .header h1 {
+                font-size: 26px;
+            }
+
+            .code-box {
+                font-size: 26px;
+                letter-spacing: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="container">
+
+        <div class="header">
+            <h1>🎓 Welcome to ELearning LMS</h1>
+            <p>Your Learning Journey Starts Here</p>
+        </div>
+
+        <div class="content">
+
+            <h2>Hello <%= user.name %>,</h2>
+
+            <p>
+                Thank you for joining our ELearning LMS. We're excited
+                to help you learn new skills, explore courses, and achieve your
+                educational goals.
+            </p>
+
+            <p>
+                To activate your account and gain access to all learning resources,
+                please use the verification code below:
+            </p>
+
+            <div class="code-box">
+                <%= activationCode %>
+            </div>
+
+            <p>
+                Enter this code on the verification page with in 5  minutes to complete your account
+                setup.
+            </p>
+
+            <div class="features">
+                <strong>Once activated, you'll be able to:</strong>
+                <ul>
+                    <li> Access online courses and study materials</li>
+                    <li> Watch video lectures and tutorials</li>
+                    <li> Complete quizzes and assignments</li>
+                    <li> Track your learning progress</li>
+                    <li> Earn certificates and achievements</li>
+                    <li> Learn from expert instructors</li>
+                </ul>
+            </div>
+
+            <p>
+                If you did not create this account, you may safely ignore this
+                email.
+            </p>
+
+            <p>
+                We look forward to supporting your learning journey.
+            </p>
+
+            <p>
+                Best Regards,<br>
+                <strong>The ELearning Team</strong>
+            </p>
+
+        </div>
+
+        <div class="footer">
+            <p>© 2026 ELearning</p>
+            <p>Empowering Learning Through Technology</p>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>
