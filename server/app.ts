@@ -1,7 +1,6 @@
 import express, { Request, Response ,NextFunction } from "express";
 import dotenv from "dotenv";
 dotenv.config();
-export const app = express();
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { ErrorMiddleware } from "./middleware/error";
@@ -12,6 +11,11 @@ import notificationRouter from "./routes/notification.route";
 import analyticsRouter from "./routes/analytics.route";
 import layoutRouter from "./routes/layout.route";
 import { rateLimit } from 'express-rate-limit'
+
+
+export const app = express();
+app.set("trust proxy", 1);
+
 
 
 // body parser
