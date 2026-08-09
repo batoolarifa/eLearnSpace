@@ -6,6 +6,9 @@ import mongoose from "mongoose";
 require('dotenv').config();
 
 
+
+console.log("===== DB.TS LOADED =====");
+
 const dbUrl = process.env.DB_URL;
 
 const connectDB = async () => {
