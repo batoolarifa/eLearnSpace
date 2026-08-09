@@ -26,7 +26,21 @@ cloudinary.config({
 
 intialSocketServer(server);
 
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-  connectDB();
-});
+
+connectDB()
+  .then(() => {
+    server.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("Server startup failed:", error);
+    process.exit(1);
+  });
+
+  
+
+// server.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+//   connectDB();
+// });
