@@ -46,6 +46,9 @@ const limiter = rateLimit({
 
 // routes
 
+
+app.use(limiter)
+
 app.use('/api/v1', userRouter, courseRouter, orderRouter, notificationRouter, analyticsRouter, layoutRouter);
 
 app.get('/test', (req: Request, res: Response, next: NextFunction) => {
@@ -70,5 +73,6 @@ app.all(/.*/, (req: Request, res: Response, next: NextFunction) => {
 
 // middleware calls
 
-app.use(limiter)
 app.use(ErrorMiddleware);
+
+export default app;
