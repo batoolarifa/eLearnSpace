@@ -6,7 +6,6 @@
     "dev": "ts-node-dev --respawn --transpile-only server.ts",
     "start": "node build/server.js",
     "build": "tsc"
-    
   },
   "author": "syeda arifa batool",
   "license": "ISC",
