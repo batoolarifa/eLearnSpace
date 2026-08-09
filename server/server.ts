@@ -12,7 +12,7 @@ import { intialSocketServer } from "./socketServer";
 const server = http.createServer(app);
 
 
-const PORT = Number(process.env.PORT) || 8000;
+const PORT = process.env.PORT || 8000;
 
 
 // cloudinary config
@@ -26,14 +26,7 @@ cloudinary.config({
 
 intialSocketServer(server);
 
-server.listen(PORT, "0.0.0.0", () => {
+server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
   connectDB();
 });
-
-
-
-// server.listen(PORT, () => {
-//   console.log(`Server is running on port ${PORT}`);
-//   connectDB();
-// });
