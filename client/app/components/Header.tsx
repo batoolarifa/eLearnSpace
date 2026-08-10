@@ -30,9 +30,11 @@ const Header: FC <Props> = ({activeItem, setOpen, route, open, setRoute}) => {
     const [active, setActive] = useState(false);
     const [openSidebar, setOpenSidebar] = useState(false);
     
+    
     const {data: userData, isLoading, refetch} = useLoadUserQuery(undefined, {});
     const {data} = useSession();
-    const [socialAuth, {isSuccess, error}] = useSocialAuthMutation();
+    const [socialAuth, { isSuccess, error, isLoading: socialAuthLoading }] =
+    useSocialAuthMutation();
     const [logout, setLogout] = useState(false);
     
         const {} = useLogoutQuery(undefined, {
@@ -72,7 +74,7 @@ const Header: FC <Props> = ({activeItem, setOpen, route, open, setRoute}) => {
             handleSocialAuth();
         }, [data, userData, isLoading, socialAuth, refetch, isSuccess]);
 
-        
+
     if(typeof window !== "undefined"){
         window.addEventListener("scroll", () => {
             if(window.scrollY > 80) {
@@ -135,38 +137,35 @@ const Header: FC <Props> = ({activeItem, setOpen, route, open, setRoute}) => {
                  </div>
                 
                 {
-                    userData ? (
-                        <>
-                         <Link href="/profile">
+                isLoading || socialAuthLoading 
+                            ? (
+                        <div className="w-9 h-9 rounded-full border-2 border-gray-300 dark:border-gray-700 animate-pulse" />
+                    ) : userData ? (
+                        <Link href="/profile">
                             <div
                                 className={`relative w-9 h-9 rounded-full overflow-hidden border-2 transition-all duration-200 ${
-                                activeItem === 5
-                                    ? "border-emerald-500"
-                                    : "border-gray-200 dark:border-gray-700"
+                                    activeItem === 5
+                                        ? "border-emerald-500"
+                                        : "border-gray-200 dark:border-gray-700"
                                 }`}
                             >
                                 <Image
-                                src={userData?.user?.avatar?.url || avatar}
-                                alt="Profile"
-                                fill
-                                sizes="36px"
-                                className="object-cover"
-                                priority
+                                    src={userData?.user?.avatar?.url || avatar}
+                                    alt="Profile"
+                                    fill
+                                    sizes="36px"
+                                    className="object-cover"
+                                    priority
                                 />
                             </div>
-                            </Link>
-                        </>
-
-                    )  
-                    :  (
+                        </Link>
+                    ) : (
                         <HiOutlineUserCircle
-                        size={25}
-                        className=" hidden 800:block cursor-pointer dark:text-white text-black"
-                        onClick={() => setOpen(true)}
+                            size={25}
+                            className="hidden 800:block cursor-pointer dark:text-white text-black"
+                            onClick={() => setOpen(true)}
                         />
                     )
-
-
                 }
 
                 <br />
@@ -193,39 +192,35 @@ const Header: FC <Props> = ({activeItem, setOpen, route, open, setRoute}) => {
                    isMobile={true}
                  /> 
 
-                    {
-                    userData ? (
-                        <>
-                         <Link href="/profile">
+                  {
+                    isLoading || socialAuthLoading ? (
+                    <div className="ml-5 w-9 h-9 rounded-full border-2 border-gray-300 dark:border-gray-700 animate-pulse" />
+                            ) : userData ? (
+                        <Link href="/profile">
                             <div
                                 className={`relative ml-5 w-9 h-9 rounded-full overflow-hidden border-2 transition-all duration-200 ${
-                                activeItem === 5
-                                    ? "border-emerald-500"
-                                    : "border-gray-200 dark:border-gray-700"
+                                    activeItem === 5
+                                        ? "border-emerald-500"
+                                        : "border-gray-200 dark:border-gray-700"
                                 }`}
                             >
                                 <Image
-                                src={userData?.user?.avatar?.url || avatar}
-                                alt="Profile"
-                                fill
-                                sizes="36px"
-                                className="object-cover "
-                                priority
+                                    src={userData?.user?.avatar?.url || avatar}
+                                    alt="Profile"
+                                    fill
+                                    sizes="36px"
+                                    className="object-cover"
+                                    priority
                                 />
                             </div>
-                            </Link>
-                        </>
-
-                    )  
-                    :  (
+                        </Link>
+                    ) : (
                         <HiOutlineUserCircle
-                        size={25}
-                        className=" ml-6 cursor-pointer dark:text-white text-black"
-                        onClick={() => setOpen(true)}
+                            size={25}
+                            className="ml-6 cursor-pointer dark:text-white text-black"
+                            onClick={() => setOpen(true)}
                         />
                     )
-
-
                 }
 
                 <br />
