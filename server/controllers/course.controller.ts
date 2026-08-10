@@ -50,7 +50,7 @@ export const editCourse = CatchAsyncError(async(req: Request, res: Response, nex
         const data = req.body;
         const thumbnail =  data.thumbnail;
 
-        const courseId = req.params.id;
+        const courseId = req.params.id  as string;
 
         const course = await CourseModel.findById(courseId);
 
@@ -85,6 +85,12 @@ export const editCourse = CatchAsyncError(async(req: Request, res: Response, nex
             {
                 new: true
             });
+
+        // Delete individual course cache
+            await redis.del(courseId);
+
+            // Delete cached all-courses list
+            await redis.del("allCourses");
 
         res.status(200).json({
                 success: true,
@@ -547,7 +553,12 @@ export const deleteCourse = CatchAsyncError(async (req: Request, res: Response, 
         }
 
         await course.deleteOne({id});
+        
+         // delete individual course cache
         await redis.del(id);
+
+        // delete cached all-courses list
+        await redis.del("allCourses"); 
 
 
         res.status(200).json({

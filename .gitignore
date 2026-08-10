@@ -1,6 +1,8 @@
 # Dependencies
 node_modules/
 
+README.md
+
 # Next.js
 .next/
 out/
