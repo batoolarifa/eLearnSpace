@@ -1,4 +1,4 @@
-// const dns = require("dns"); dns.setServers(["1.1.1.1", "8.8.8.8"]);
+const dns = require("dns"); dns.setServers(["1.1.1.1", "8.8.8.8"]);
 
 
 import mongoose from "mongoose";
@@ -26,31 +26,24 @@ require('dotenv').config();
 
 
 
-const dbUrl = process.env.DB_URL;
 
-if (!dbUrl) {
-  throw new Error("DB_URL is missing");
+
+const MONGODB_URI = process.env.DB_URL;
+
+if (!MONGODB_URI) {
+  throw new Error("Please define DB_URL environment variable");
 }
 
-interface MongooseCache {
-  conn: typeof mongoose | null;
-  promise: Promise<typeof mongoose> | null;
+let cached = (global as any).mongoose;
+
+if (!cached) {
+  cached = (global as any).mongoose = {
+    conn: null,
+    promise: null,
+  };
 }
 
-declare global {
-  var mongooseCache: MongooseCache | undefined;
-}
-
-const cached: MongooseCache = global.mongooseCache || {
-  conn: null,
-  promise: null,
-};
-
-if (!global.mongooseCache) {
-  global.mongooseCache = cached;
-}
-
-const connectDB = async (): Promise<typeof mongoose> => {
+const connectDB = async () => {
   if (cached.conn) {
     console.log("Using existing MongoDB connection");
     return cached.conn;
@@ -60,22 +53,15 @@ const connectDB = async (): Promise<typeof mongoose> => {
     console.log("Creating new MongoDB connection...");
 
     cached.promise = mongoose
-      .connect(dbUrl, {
+      .connect(MONGODB_URI, {
         bufferCommands: false,
       })
-      .then((mongooseInstance) => {
+      .then((mongoose) => {
         console.log(
-          `Database connected with ${mongooseInstance.connection.host}`
+          `MongoDB connected: ${mongoose.connection.host}`
         );
 
-        return mongooseInstance;
-      })
-      .catch((error) => {
-        console.error("MongoDB connection failed:", error.message);
-
-        cached.promise = null;
-
-        throw error;
+        return mongoose;
       });
   }
 
