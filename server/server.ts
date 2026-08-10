@@ -7,7 +7,7 @@ import connectDB from "./utils/db";
 import { v2 as cloudinary} from "cloudinary";
 import { intialSocketServer } from "./socketServer";
 
-console.log("===== SERVER.TS STARTED =====");
+
 
 const server = http.createServer(app);
 
@@ -37,8 +37,6 @@ connectDB()
     console.error("Server startup failed:", error);
     process.exit(1);
   });
-
-
 
 // server.listen(PORT, () => {
 //   console.log(`Server is running on port ${PORT}`);
