@@ -41,29 +41,38 @@ const Header: FC <Props> = ({activeItem, setOpen, route, open, setRoute}) => {
     
 
     useEffect(() => {
-        if(!isLoading){
-        if(!userData){
-            if(data) {
-                socialAuth({email: data?.user?.email, name:data?.user?.name, avatar: data?.user?.image})
-                refetch();
-            }
-        }
-       
-        if(data === null){
-            if( isSuccess ){
-            toast.success("Login successfully ")
-        }
-      }
-        if(data === null && !isLoading && !userData) {
+            const handleSocialAuth = async () => {
+                if (!isLoading) {
+                    if (!userData && data?.user?.email) {
+                        try {
+                            await socialAuth({
+                                email: data.user.email,
+                                name: data.user.name || "",
+                                avatar: data.user.image || "",
+                            }).unwrap();
 
-            setLogout(true);
+                            await refetch();
+                        } catch (error) {
+                            console.error("Social auth failed:", error);
+                        }
+                    }
 
-        }
+                    if (data === null) {
+                        if (isSuccess) {
+                            toast.success("Login successfully");
+                        }
+                    }
 
-    }}, [data, userData, isLoading]);
-    
+                    if (data === null && !userData) {
+                        setLogout(true);
+                    }
+                }
+            };
 
+            handleSocialAuth();
+        }, [data, userData, isLoading, socialAuth, refetch, isSuccess]);
 
+        
     if(typeof window !== "undefined"){
         window.addEventListener("scroll", () => {
             if(window.scrollY > 80) {
