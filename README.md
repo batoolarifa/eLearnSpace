@@ -5,6 +5,15 @@
 </p>
 
 
+<a href="YOUR_YOUTUBE_LINK">
+  <img width="800" alt="eLearnSpace Demo" src="https://github.com/user-attachments/assets/0ad532e1-f837-438c-84e4-f8196558c1e5" />
+</a>
+
+**▶️ [Watch the Full Demo on YouTube](YOUR_YOUTUBE_LINK)**
+
+
+
+
 > A end to end system engineered to demonstrate real-world application architecture, authentication, authorization, payments, caching, real-time communication, media management, analytics, and cloud deployment.
 
 <br>
@@ -548,22 +557,6 @@ The result is an application where individual features are connected through del
 
 
 
-# Screenshots
-
-> Add screenshots/GIFs of the most important workflows here.
-
-Recommended screenshots:
-
-1. Landing page
-2. Course listing
-3. Course details
-4. Login / registration
-5. Google/GitHub authentication
-6. Student dashboard
-7. Course checkout
-8. Notifications
-9. Profile
-10. Admin dashboard
 
 
 # 🧪 Running Locally
@@ -692,9 +685,7 @@ For OAuth authentication, the provider callback URLs must match the local authen
 
  ## 👩‍💻 Author
 
-**Syeda Arifa Batool**
-
-> focused on building practical, production-oriented applications and continuously growing as a software engineer.
+**Syeda Arifa Batool** focused on building practical, production-oriented applications and continuously growing as a software engineer.
 
 
 
