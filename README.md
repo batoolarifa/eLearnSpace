@@ -5,11 +5,13 @@
 </p>
 
 
-<a href="YOUR_YOUTUBE_LINK">
-  <img width="800" alt="eLearnSpace Demo" src="https://github.com/user-attachments/assets/0ad532e1-f837-438c-84e4-f8196558c1e5" />
+<a href="https://www.youtube.com/watch?v=wX1ieRArcBY">
+  <img width="800" alt="eLearnSpace Demo" src="https://github.com/user-attachments/assets/b1d745f5-5e0d-4123-ac40-bf9238103555" />
 </a>
 
-**▶️ [Watch the Full Demo on YouTube](YOUR_YOUTUBE_LINK)**
+<p align="center">
+  ▶️ <strong><a href="https://www.youtube.com/watch?v=wX1ieRArcBY">Watch the Full Demo on YouTube</a></strong>
+</p>
 
 
 
