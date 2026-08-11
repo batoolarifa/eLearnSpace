@@ -6,13 +6,8 @@
 
 
 <a href="https://www.youtube.com/watch?v=wX1ieRArcBY">
-  <img width="800" alt="eLearnSpace Demo" src="https://github.com/user-attachments/assets/b1d745f5-5e0d-4123-ac40-bf9238103555" />
+  <img width="1920" height="924" alt="eLearnSpace Demo" src="https://github.com/user-attachments/assets/d023457e-6294-46bc-ba99-dcf5ac32b8c6" />
 </a>
-
-<p align="center">
-  ▶️ <strong><a href="https://www.youtube.com/watch?v=wX1ieRArcBY">Watch the Full Demo on YouTube</a></strong>
-</p>
-
 
 
 
